@@ -10,40 +10,40 @@ class RightTriangleCheck extends Component {
         this.sides = [3, 4, 5]
     }
 
-    get pythagoreanTheorem() {
-
+    get sortSides() {
         let largestSide = Math.max(this.sides[0], this.sides[1], this.sides[2]);
-        let otherTwoSides = this.sides.filter((side) => side !== largestSide)
-        let largestSideSq = largestSide * largestSide
-        let sumOfSquares = otherTwoSides.reduce((total, side) => total + (side * side))
-        // let sumOfSquares = otherTwoSides[0]*otherTwoSides[0] + otherTwoSides[1]*otherTwoSides[1]
+        let otherTwoSidesSquared = this.sides.filter((side) => side !== largestSide).map((side) => side * side)
         
-console.log(sumOfSquares)
+        this.pythagoreanTheorem(largestSide, otherTwoSidesSquared)
+    }
+    
+    pythagoreanTheorem(largest, otherTwoSquared) {
+        let largestSideSq = largest * largest
+        let sumOfSquares = otherTwoSquared.reduce((total, sideSq) => total + sideSq)
+
         if (largestSideSq === sumOfSquares) {
-            console.log('This is a right triangle')
-            return true
+            console.log(`========================================`)
+            console.log(`This IS a right triangle :)`)
         }
         else {
-            console.log('This is not a right triangle')
-            return false
+            console.log(`========================================`)
+            console.log(`This is NOT a right triangle :(`)
         }
     }
-
 
     render() {
         return (
             <React.Fragment>
-                <button onClick={() => this.pythagoreanTheorem} className="fancy">Check triangle</button>
+                <button onClick={() => this.sortSides} className="fancyButton">Check triangle</button>
                 <Devtools />
             </React.Fragment>
         );
     }
 }
+
 decorate(RightTriangleCheck, {
     sides: observable,
-    pythagoreanTheorem: computed
+    sortSides: computed
 })
 
-//observer makes sure that the RightTriangleCheck component reacts 
-//when an observable value changes; same as @observer from mobx-react
 export default observer(RightTriangleCheck);

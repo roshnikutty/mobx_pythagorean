@@ -13,8 +13,9 @@ body {
       monospace;
   }
 
-  .fancy {
+  .fancyButton {
     background: pink;
+    color: navy;
     padding: 10px;
     margin: 50%;
     font-size: 20px;
