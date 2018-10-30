@@ -14,7 +14,7 @@ class RightTriangleCheck extends Component {
         let largestSide = Math.max(this.sides[0], this.sides[1], this.sides[2]);
         let otherTwoSidesSquared = this.sides.filter((side) => side !== largestSide).map((side) => side * side)
         
-        this.pythagoreanTheorem(largestSide, otherTwoSidesSquared)
+        return this.pythagoreanTheorem(largestSide, otherTwoSidesSquared)
     }
     
     pythagoreanTheorem(largest, otherTwoSquared) {
@@ -26,7 +26,7 @@ class RightTriangleCheck extends Component {
             console.log(`This IS a right triangle :)`)
         }
         else {
-            console.log(`========================================`)
+            console.log(`XXX==========XXX=========XXX=========XXX`)
             console.log(`This is NOT a right triangle :(`)
         }
     }
